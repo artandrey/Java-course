@@ -1,7 +1,11 @@
 package com.example.models;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+@Data
+@EqualsAndHashCode(callSuper = true)
 @ToString
 public class Book extends Model {
     private String title;
@@ -14,38 +18,6 @@ public class Book extends Model {
         this.isbn = isbn;
         this.publishmentYear = publishmentYear;
         this.authorId = authorId;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public long getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(long isbn) {
-        this.isbn = isbn;
-    }
-
-    public int getPublishmentYear() {
-        return publishmentYear;
-    }
-
-    public void setPublishmentYear(int publishmentYear) {
-        this.publishmentYear = publishmentYear;
-    }
-
-    public long getAuthorId() {
-        return authorId;
-    }
-
-    public void setAuthorId(Author author) {
-        this.authorId = author.getId();
     }
 
 }

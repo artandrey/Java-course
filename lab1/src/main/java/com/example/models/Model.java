@@ -1,5 +1,8 @@
 package com.example.models;
 
+import lombok.Data;
+
+@Data
 public abstract class Model implements IIdetifiable {
     private long id;
 
