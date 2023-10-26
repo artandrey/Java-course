@@ -1,5 +1,7 @@
 package com.example.models;
 
+import java.util.UUID;
+
 public interface IIdentifiable {
-    long getId();
+    UUID getId();
 }

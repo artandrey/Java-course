@@ -7,14 +7,11 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class Product extends ModelBase implements IProduct {
-
-    private final double price;
+public class ProductsPack extends ProductsContainer implements IProduct {
 
     private final String title;
 
-    public Product(String title, double price) {
-        this.price = price;
+    public ProductsPack(String title) {
         this.title = title;
     }
 
