@@ -25,11 +25,11 @@
 
 ```java
 @Data
-public abstract class ModelBase implements IIdentifiable {
+public abstract class BaseModel {
 
     private UUID id;
 
-    public ModelBase() {
+    public BaseModel() {
         this.id = IdGenerator.generateUUID();
     }
 

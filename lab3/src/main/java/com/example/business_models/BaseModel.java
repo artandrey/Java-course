@@ -7,7 +7,7 @@ import com.example.util.IdGenerator;
 import lombok.Data;
 
 @Data
-public abstract class BaseModel implements IIdentifiable {
+public abstract class BaseModel {
 
     private UUID id;
 

@@ -1,7 +1,10 @@
 package com.example.business_models.interfaces;
 
-import com.example.business_models.IIdentifiable;
+import java.util.UUID;
 
-public interface IProduct extends IIdentifiable, IValuable {
+public interface IProduct extends IValuable {
+    UUID getId();
+
     String getTitle();
+
 }

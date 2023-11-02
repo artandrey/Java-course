@@ -4,18 +4,16 @@ import com.example.business_models.interfaces.IProduct;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
+@RequiredArgsConstructor
 public class Product extends BaseModel implements IProduct {
 
-    private final double price;
-
+    @NonNull
     private final String title;
-
-    public Product(String title, double price) {
-        this.price = price;
-        this.title = title;
-    }
+    private final double price;
 
 }
