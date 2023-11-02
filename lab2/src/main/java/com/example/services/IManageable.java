@@ -2,7 +2,7 @@ package com.example.services;
 
 import java.util.List;
 
-import com.example.models.Item;
+import com.example.models.Items.Item;
 
 public interface IManageable {
     void addItem(Item item);

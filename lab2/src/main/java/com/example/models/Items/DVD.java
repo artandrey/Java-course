@@ -1,4 +1,4 @@
-package com.example.models;
+package com.example.models.Items;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -10,8 +10,8 @@ import lombok.ToString;
 public class DVD extends Item {
     private float duration;
 
-    public DVD(String title, long id, float duration) {
-        super(title, id);
+    public DVD(String title, float duration) {
+        super(title);
         this.duration = duration;
     }
 

@@ -6,19 +6,21 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.example.models.Book;
+import com.example.models.Items.Book;
 
 public class BookTest {
     private Book book;
 
     @BeforeEach
     public void setUp() {
-        book = new Book("Test Book", 1, "Test Author");
+        book = new Book("Test Book", "Test Author");
     }
 
     @Test
     public void testBorrowItem() {
+
         book.borrowItem();
+
         assertTrue(book.isBorrowed());
     }
 
@@ -26,7 +28,9 @@ public class BookTest {
     public void testReturnItem() {
         book.borrowItem();
         assertTrue(book.isBorrowed());
+
         book.returnItem();
+
         assertFalse(book.isBorrowed());
     }
 }

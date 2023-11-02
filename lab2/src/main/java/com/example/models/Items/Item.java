@@ -1,21 +1,24 @@
-package com.example.models;
+package com.example.models.Items;
+
+import com.example.models.BaseModel;
+import com.example.models.Items.interfaces.IItem;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
-public abstract class Item implements IIdentifiable {
+@EqualsAndHashCode(callSuper = true)
+public abstract class Item extends BaseModel implements IItem {
     private String title;
-    private long id;
     private boolean isBorrowed = false;
 
-    public Item(String title, long id) {
+    public Item(String title) {
         this.title = title;
-        this.id = id;
+
     }
 
     public Item(String title, long id, boolean isBorrowed) {
         this.title = title;
-        this.id = id;
         this.isBorrowed = isBorrowed;
     }
 

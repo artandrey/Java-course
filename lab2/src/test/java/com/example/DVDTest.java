@@ -6,19 +6,21 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.example.models.DVD;
+import com.example.models.Items.DVD;
 
 public class DVDTest {
     private DVD dvd;
 
     @BeforeEach
     public void setUp() {
-        dvd = new DVD("Test DVD", 1, 120.5f);
+        dvd = new DVD("Test DVD", 120.5f);
     }
 
     @Test
     public void testBorrowItem() {
+
         dvd.borrowItem();
+
         assertTrue(dvd.isBorrowed());
     }
 
@@ -26,7 +28,9 @@ public class DVDTest {
     public void testReturnItem() {
         dvd.borrowItem();
         assertTrue(dvd.isBorrowed());
+
         dvd.returnItem();
+
         assertFalse(dvd.isBorrowed());
     }
 }

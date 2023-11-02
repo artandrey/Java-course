@@ -3,17 +3,19 @@ package com.example.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.models.Items.Item;
+
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
-public class Patron implements IIdentifiable {
+@EqualsAndHashCode(callSuper = true)
+public class Patron extends BaseModel {
     private String name;
-    private long id;
     private List<Item> borrowedItems = new ArrayList<>();
 
-    public Patron(String name, long id) {
+    public Patron(String name) {
         this.name = name;
-        this.id = id;
     }
 
     public void borrowItem(Item item) {

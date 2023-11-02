@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.exceptions.LibraryException;
-import com.example.models.Item;
 import com.example.models.Patron;
+import com.example.models.Items.Item;
 
 public class Library implements IManageable {
     private List<Item> items = new ArrayList<>();
