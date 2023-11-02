@@ -1,17 +1,17 @@
-package com.example.models.order;
+package com.example.business_models.order;
 
 import java.util.Optional;
 
-import com.example.models.Cart;
-import com.example.models.Customer;
-import com.example.models.ModelBase;
+import com.example.business_models.Cart;
+import com.example.business_models.Customer;
+import com.example.business_models.BaseModel;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class Order extends ModelBase {
+public class Order extends BaseModel {
 
     private OrderStatus status = OrderStatus.PENDING;
 

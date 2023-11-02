@@ -1,6 +1,6 @@
-package com.example.models;
+package com.example.business_models;
 
-import com.example.models.interfaces.IProduct;
+import com.example.business_models.interfaces.IProduct;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

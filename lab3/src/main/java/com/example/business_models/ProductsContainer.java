@@ -1,19 +1,19 @@
-package com.example.models;
+package com.example.business_models;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import com.example.models.interfaces.IProduct;
-import com.example.models.interfaces.IProductContainable;
-import com.example.models.interfaces.IValuable;
+import com.example.business_models.interfaces.IProduct;
+import com.example.business_models.interfaces.IProductContainable;
+import com.example.business_models.interfaces.IValuable;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public abstract class ProductsContainer extends ModelBase implements IValuable, IProductContainable {
+public abstract class ProductsContainer extends BaseModel implements IValuable, IProductContainable {
 
     private final List<IProduct> products = new ArrayList<>();
 

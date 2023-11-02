@@ -1,10 +1,10 @@
 package com.example;
 
-import com.example.models.Cart;
-import com.example.models.Customer;
-import com.example.models.Product;
-import com.example.models.ProductsPack;
-import com.example.models.order.Order;
+import com.example.business_models.Cart;
+import com.example.business_models.Customer;
+import com.example.business_models.Product;
+import com.example.business_models.ProductsPack;
+import com.example.business_models.order.Order;
 
 /**
  * Hello world!
@@ -32,9 +32,9 @@ public class App {
 
         cart.addProduct(campingPack).addProduct(water).addProduct(jarsPack);
 
-        Customer client1 = new Customer();
+        Customer client1 = new Customer("Andrii", "+3800000000000");
 
-        Customer client2 = new Customer();
+        Customer client2 = new Customer("Andrii 2", "+380000000001");
 
         Order order = new Order.OrderBuilder(client1, cart).setReceiver(client2).build();
 

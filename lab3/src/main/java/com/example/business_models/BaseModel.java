@@ -1,4 +1,4 @@
-package com.example.models;
+package com.example.business_models;
 
 import java.util.UUID;
 
@@ -7,11 +7,11 @@ import com.example.util.IdGenerator;
 import lombok.Data;
 
 @Data
-public abstract class ModelBase implements IIdentifiable {
+public abstract class BaseModel implements IIdentifiable {
 
     private UUID id;
 
-    public ModelBase() {
+    public BaseModel() {
         this.id = IdGenerator.generateUUID();
     }
 

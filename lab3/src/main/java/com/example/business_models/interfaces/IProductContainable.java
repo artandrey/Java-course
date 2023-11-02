@@ -1,4 +1,4 @@
-package com.example.models.interfaces;
+package com.example.business_models.interfaces;
 
 import java.util.UUID;
 
