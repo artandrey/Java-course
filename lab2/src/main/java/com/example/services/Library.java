@@ -3,7 +3,7 @@ package com.example.services;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.exceptions.LibraryException;
+import com.example.exceptions.ServiceException;
 import com.example.models.Patron;
 import com.example.models.Items.Item;
 
@@ -25,18 +25,18 @@ public class Library implements IManageable {
         items.remove(item);
     }
 
-    private void assertPatronAccess(Patron patron) throws LibraryException {
+    private void assertPatronAccess(Patron patron) throws ServiceException {
         if (!patrons.contains(patron)) {
-            throw new LibraryException("This patron is nor registered");
+            throw new ServiceException("This patron is nor registered");
         }
     }
 
-    public void lendItem(Patron patron, Item item) throws LibraryException {
+    public void lendItem(Patron patron, Item item) throws ServiceException {
         assertPatronAccess(patron);
         patron.borrowItem(item);
     }
 
-    public void returnItem(Patron patron, Item item) throws LibraryException {
+    public void returnItem(Patron patron, Item item) throws ServiceException {
         assertPatronAccess(patron);
         patron.returnItem(item);
     }

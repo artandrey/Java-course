@@ -1,6 +1,6 @@
 package com.example;
 
-import com.example.exceptions.LibraryException;
+import com.example.exceptions.ServiceException;
 import com.example.models.Patron;
 import com.example.models.Items.Book;
 import com.example.models.Items.Item;
@@ -24,7 +24,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void testLendAndReturnItem() throws LibraryException {
+    public void testLendAndReturnItem() throws ServiceException {
         Item item = new Book("Test Book", "Test Author");
         library.addItem(item);
         library.registerPatron(patron);
