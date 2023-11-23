@@ -1,5 +1,6 @@
 package com.example.business_models;
 
+import com.example.business_models.interfaces.ICart;
 import com.example.business_models.interfaces.IProduct;
 
 import lombok.Data;
@@ -7,7 +8,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class Cart extends ProductsContainer {
+public class Cart extends ProductsContainer implements ICart {
     private static final int TITLE_LENGTH = 25;
 
     @Override

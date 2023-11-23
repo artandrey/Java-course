@@ -23,9 +23,8 @@ public abstract class ProductsContainer extends BaseModel implements IValuable, 
     }
 
     @Override
-    public IProductContainable addProduct(IProduct product) {
+    public void addProduct(IProduct product) {
         products.add(product);
-        return this;
     }
 
     @Override

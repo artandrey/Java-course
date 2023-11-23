@@ -18,19 +18,25 @@ public class App {
 
         ProductsPack bottlesPack = new ProductsPack("Bottles Pack");
 
-        bottlesPack.addProduct(water).addProduct(water).addProduct(water);
+        bottlesPack.addProduct(water);
+        bottlesPack.addProduct(water);
+        bottlesPack.addProduct(water);
 
         ProductsPack jarsPack = new ProductsPack("Jars Pack");
 
-        jarsPack.addProduct(jar).addProduct(jar);
+        jarsPack.addProduct(jar);
+        jarsPack.addProduct(jar);
 
         ProductsPack campingPack = new ProductsPack("Camping pack");
 
-        campingPack.addProduct(bottlesPack).addProduct(bread);
+        campingPack.addProduct(bottlesPack);
+        campingPack.addProduct(bread);
 
         Cart cart = new Cart();
 
-        cart.addProduct(campingPack).addProduct(water).addProduct(jarsPack);
+        cart.addProduct(campingPack);
+        cart.addProduct(water);
+        cart.addProduct(jarsPack);
 
         Customer client1 = new Customer("Andrii", "+3800000000000");
 

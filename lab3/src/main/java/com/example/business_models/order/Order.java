@@ -2,8 +2,8 @@ package com.example.business_models.order;
 
 import java.util.Optional;
 
-import com.example.business_models.Cart;
 import com.example.business_models.Customer;
+import com.example.business_models.interfaces.ICart;
 import com.example.business_models.BaseModel;
 
 import lombok.Data;
@@ -17,13 +17,13 @@ public class Order extends BaseModel {
 
     private final Customer client;
 
-    private final Cart cart;
+    private final ICart cart;
 
     private final Optional<Customer> receiver;
 
     private final boolean call;
 
-    private Order(Customer client, Optional<Customer> receiver, boolean call, Cart cart) {
+    private Order(Customer client, Optional<Customer> receiver, boolean call, ICart cart) {
         this.client = client;
         this.receiver = receiver;
         this.call = call;
@@ -43,9 +43,9 @@ public class Order extends BaseModel {
 
         private boolean call = false;
 
-        private final Cart cart;
+        private final ICart cart;
 
-        public OrderBuilder(Customer client, Cart cart) {
+        public OrderBuilder(Customer client, ICart cart) {
             this.client = client;
             this.cart = cart;
         }
