@@ -23,6 +23,11 @@ public class PalindromeCheckerTest {
     }
 
     @Test
+    public void testIsPalindromeWithPhrasePalindrome() {
+        assertFalse(PalindromeChecker.checkIsPalindrome("A man a plan a canal Panama"));
+    }
+
+    @Test
     public void testIsPalindromeWithEmptyString() {
         assertTrue(PalindromeChecker.checkIsPalindrome(""));
     }

@@ -57,7 +57,7 @@ return true;
 -   `testIsPalindromeWithPalindrome`: перевірка, чи слово "radar" є паліндромом.
 -   `testIsPalindromeWithNonPalindrome`: перевірка, чи слово "hello" не є паліндромом.
 -   `testIsPalindromeWithMixedCasePalindrome`: перевірка, чи слово "Level" є паліндромом незалежно від регістру.
--   `testIsPalindromeWithPhrasePalindrome`: перевірка, чи фраза "A man a plan a canal Panama" є паліндромом.
+-   `testIsPalindromeWithIncorrectPhrasePalindrome`: перевірка, чи фраза "A man a plan a canal Panama" не пройде перевірку.
 -   `testIsPalindromeWithEmptyString`: перевірка, чи порожній рядок є паліндромом.
 -   `testIsPalindromeWithSingleCharacter`: перевірка, чи одиночний символ "a" є паліндромом.
 -   `testIsPalindromeWithWhitespace`: перевірка, чи фраза "Able was I ere I saw Elba" є паліндромом, ігноруючи пробіли.
