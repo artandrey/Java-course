@@ -1,4 +1,4 @@
-    package com.example;
+package com.example;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -9,7 +9,7 @@ public class TaskTests {
 
     @Test
     public void isPalindrome() {
-        assertTrue(PalindromeChecker.checkIsPalindrome(null));
+        assertFalse(PalindromeChecker.checkIsPalindrome(null));
         assertTrue(PalindromeChecker.checkIsPalindrome("radar"));
         assertFalse(PalindromeChecker.checkIsPalindrome("banana"));
         assertTrue(PalindromeChecker.checkIsPalindrome("hannah"));
@@ -19,6 +19,7 @@ public class TaskTests {
         assertTrue(PalindromeChecker.checkIsPalindrome("eye"));
         assertTrue(PalindromeChecker.checkIsPalindrome("6543456"));
         assertTrue(PalindromeChecker.checkIsPalindrome("step on no pets"));
+        assertFalse(PalindromeChecker.checkIsPalindrome("Step on no pets"));
         assertFalse(PalindromeChecker.checkIsPalindrome("A man a plan a canal Panama"));
     }
 

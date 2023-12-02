@@ -1,19 +1,13 @@
 package com.example;
 
+import java.util.stream.IntStream;
+
 public class PalindromeChecker {
     public static boolean checkIsPalindrome(String input) {
         if (input == null) {
-            return true;
+            return false;
         }
-
-        String cleanedPhrase = input.trim().replaceAll("\\s", " ").toLowerCase();
-
-        for (int i = 0; i < cleanedPhrase.length() / 2; i++) {
-            if (cleanedPhrase.charAt(i) != cleanedPhrase.charAt(cleanedPhrase.length() - 1 - i)) {
-                return false;
-            }
-        }
-
-        return true;
+        return IntStream.range(0, input.length() / 2)
+                .noneMatch(i -> input.charAt(i) != input.charAt(input.length() - 1 - i));
     }
 }
