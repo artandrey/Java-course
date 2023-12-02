@@ -38,8 +38,7 @@ public class Decoder {
     }
 
     public static String decode(String input) {
-        String[] words = input.split("\\s");
-        return Arrays.stream(words).map(Decoder::decodeWord).collect(Collectors.joining(" "));
+        return Arrays.stream(input.split("\\s")).map(Decoder::decodeWord).collect(Collectors.joining(" "));
     }
 
     private static String decodeWord(String word) {
