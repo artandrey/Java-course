@@ -2,8 +2,10 @@ package com.example;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.ToString;
 
 @AllArgsConstructor
+@ToString
 public class BankAccount {
     @Getter
     private long accountNumber;
@@ -21,6 +23,6 @@ public class BankAccount {
     }
 
     public void getAccountSummary() {
-
+        System.out.println(this.toString());
     }
 }

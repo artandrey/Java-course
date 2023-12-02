@@ -10,16 +10,19 @@ public class Bank {
     private final List<BankAccount> accounts = new ArrayList<>();
 
     public long createAccount(String accountName, double initialDeposit) {
+        if (initialDeposit <= 0) {
+            throw new NegativeAmountException(initialDeposit);
+        }
         BankAccount newAccount = new BankAccount(AccountNumberGenerator.generateNumber(), accountName, initialDeposit);
         accounts.add(newAccount);
         return newAccount.getAccountNumber();
     }
 
-    public BankAccount findAccount(int accountNumber) {
+    public BankAccount findAccount(long accountNumber) {
         return accounts.stream().filter(account -> account.getAccountNumber() == accountNumber).findAny().orElseThrow(() -> new com.example.exceptions.AccountNotFoundException(accountNumber));
     }
 
-    void transferMoney(int fromAccountNumber, int toAccountNumber, double amount) {
+    void transferMoney(long fromAccountNumber, long toAccountNumber, double amount) {
         BankAccount senderAccount = findAccount(fromAccountNumber);
         BankAccount recepientAccount = findAccount(toAccountNumber);
         if (amount <= 0) {
