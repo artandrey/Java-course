@@ -3,13 +3,14 @@ package com.example;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.exceptions.AccountNotFoundException;
 import com.example.exceptions.InsufficientFundsException;
 import com.example.exceptions.NegativeAmountException;
 
 public class Bank {
     private final List<BankAccount> accounts = new ArrayList<>();
 
-    public long createAccount(String accountName, double initialDeposit) {
+    public long createAccount(String accountName, double initialDeposit) throws NegativeAmountException {
         if (initialDeposit <= 0) {
             throw new NegativeAmountException(initialDeposit);
         }
@@ -18,11 +19,11 @@ public class Bank {
         return newAccount.getAccountNumber();
     }
 
-    public BankAccount findAccount(long accountNumber) {
-        return accounts.stream().filter(account -> account.getAccountNumber() == accountNumber).findAny().orElseThrow(() -> new com.example.exceptions.AccountNotFoundException(accountNumber));
+    public BankAccount findAccount(long accountNumber) throws AccountNotFoundException {
+        return accounts.stream().filter(account -> account.getAccountNumber() == accountNumber).findAny().orElseThrow(() -> new AccountNotFoundException(accountNumber));
     }
 
-    void transferMoney(long fromAccountNumber, long toAccountNumber, double amount) {
+    void transferMoney(long fromAccountNumber, long toAccountNumber, double amount) throws AccountNotFoundException, NegativeAmountException, InsufficientFundsException {
         BankAccount senderAccount = findAccount(fromAccountNumber);
         BankAccount recepientAccount = findAccount(toAccountNumber);
         if (amount <= 0) {
