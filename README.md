@@ -20,6 +20,44 @@
 
 -   Для обробки виняткових ситуацій були створені спеціалізовані класи винятків: `InsufficientFundsException`, `NegativeAmountException` та `AccountNotFoundException`. Кожен з них використовується для відловлення конкретного виду помилки, такого як недостатні кошти на рахунку, спроба внесення від'ємної суми чи відсутність рахунку.
 
+```java
+@Getter
+public class AccountNotFoundException extends RuntimeException {
+    private final long accountNumber;
+
+    public AccountNotFoundException(long accountNumber) {
+        super("Account not found for account number: " + accountNumber);
+        this.accountNumber = accountNumber;
+    }
+}
+```
+
+```java
+@Getter
+public class InsufficientFundsException extends RuntimeException {
+    private final double balance;
+    private final double withdrawAmount;
+
+    public InsufficientFundsException(double balance, double withdrawAmount) {
+        super("Cannot withdraw " + withdrawAmount + " from account. Insufficient funds. Current account`s balance: " + balance);
+        this.balance = balance;
+        this.withdrawAmount = withdrawAmount;
+    }
+}
+```
+
+```java
+@Getter
+public class NegativeAmountException extends IllegalArgumentException {
+    private final double amount;
+
+    public NegativeAmountException(double amount) {
+        super("Amount should be more than 0. Provided amount: " + amount);
+        this.amount = amount;
+    }
+}
+```
+
 -   Для управління об'єктами `BankAccount` був створений клас `Bank`, який зберігає колекцію об'єктів `BankAccount`. Метод `createAccount` використовується для створення нового банківського рахунку з вказаною назвою та початковим депозитом. Метод `findAccount` призначений для пошуку рахунку за його номером. Метод `transferMoney` використовується для здійснення переказу коштів між рахунками.
 
 ```java
@@ -31,7 +69,7 @@ public BankAccount findAccount(long accountNumber) throws AccountNotFoundExcepti
 ```
 
 ```java
-void transferMoney(long fromAccountNumber, long toAccountNumber, double amount) throws AccountNotFoundException, NegativeAmountException, InsufficientFundsException
+public void transferMoney(long fromAccountNumber, long toAccountNumber, double amount) throws AccountNotFoundException, NegativeAmountException, InsufficientFundsException
 ```
 
 -   Всі вказані методи класу `Bank` обробляють винятки, що можуть виникнути в ході їх виконання. Для тестування виняткових ситуацій були створені відповідні тестові класи, які моделюють різні сценарії використання та перевіряють коректність обробки помилок.
