@@ -18,6 +18,7 @@ public class Product extends BaseEntity implements Comparable<Product> {
     private @NonNull double price;
     @Setter
     private @NonNull int stock;
+    private @NonNull String category;
 
     public Product(int id, String name, double price, int stock) {
         super(id);
@@ -36,6 +37,8 @@ public class Product extends BaseEntity implements Comparable<Product> {
 
     public static Comparator<Product> NameComparator = (productA, productB) -> productA.getName().compareTo(productB.getName());
 
-    public static Comparator<Product> StockComparator = (productA, productB) -> productA.getName().compareTo(productB.getName());
+    public static Comparator<Product> StockComparator = Comparator.comparingInt(Product::getStock);
+
+    public static Comparator<Product> PriceComparator = Comparator.comparingDouble(Product::getPrice);
 
 }

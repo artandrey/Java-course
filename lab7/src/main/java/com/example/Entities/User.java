@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 public class User extends BaseEntity {
     @Getter
     private @NonNull String username;
-    private Map<Product, Integer> cart;
+    private Map<Product, Integer> cart = new HashMap<>();
 
     public User(int id, String username) {
         super(id);
@@ -20,7 +20,7 @@ public class User extends BaseEntity {
     }
 
     private int getProductCount(Product product) {
-        return Optional.of(cart.get(product)).orElse(0);
+        return Optional.ofNullable(cart.get(product)).orElse(0);
     }
 
     private void setProductQuantity(Product product, int quantity) {
@@ -49,7 +49,11 @@ public class User extends BaseEntity {
     }
 
     public Map<Product, Integer> getCart() {
-        return this.cart.entrySet().stream().collect(HashMap::new, (map, entry) -> map.put(entry.getKey(), entry.getValue()), Map::putAll);
+        return cart.entrySet().stream().collect(HashMap::new, (map, entry) -> map.put(entry.getKey(), entry.getValue()), Map::putAll);
+    }
+
+    public void clearCart() {
+        cart = new HashMap<>();
     }
 
 }

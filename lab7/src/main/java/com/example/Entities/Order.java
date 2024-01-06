@@ -24,7 +24,7 @@ public class Order extends BaseEntity {
     }
 
     private double getTotalPrice(Map<Product, Integer> orderDetails) {
-        return orderDetails.keySet().stream().mapToDouble(product -> product.getPrice()).sum();
+        return orderDetails.entrySet().stream().mapToDouble(productEntry -> productEntry.getKey().getPrice() * productEntry.getValue()).sum();
     }
 
 }
