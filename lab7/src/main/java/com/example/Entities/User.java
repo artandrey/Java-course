@@ -1,13 +1,17 @@
-package com.example.Entities;
+package com.example.entities;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
 import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 public class User extends BaseEntity {
     @Getter
-    private String username;
+    private @NonNull String username;
     private Map<Product, Integer> cart;
 
     public User(int id, String username) {
@@ -37,11 +41,15 @@ public class User extends BaseEntity {
     }
 
     public void removeProducts(Product product) {
-        removeProducts(product, 1);
+        cart.remove(product);
     }
 
     public void removeProducts(Product product, int quantity) {
         setProductQuantity(product, -quantity);
+    }
+
+    public Map<Product, Integer> getCart() {
+        return this.cart.entrySet().stream().collect(HashMap::new, (map, entry) -> map.put(entry.getKey(), entry.getValue()), Map::putAll);
     }
 
 }
