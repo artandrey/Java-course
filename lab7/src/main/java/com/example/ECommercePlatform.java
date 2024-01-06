@@ -64,7 +64,7 @@ public class ECommercePlatform {
     public void removeProductFromCart(int userId, int productId) {
         User user = getUserById(userId);
         Product product = getProductById(productId);
-        user.addProducts(product);
+        user.removeProducts(product);
     }
 
     public void removeProductFromCart(int userId, int productId, int quantity) {
@@ -72,9 +72,6 @@ public class ECommercePlatform {
         Product product = getProductById(productId);
         if (quantity <= 0) {
             throw new NegativeQuantityException(quantity);
-        }
-        if (product.getStock() < quantity) {
-            throw new InsufficientQuanitytException(quantity, product.getStock());
         }
         user.removeProducts(product, quantity);
     }

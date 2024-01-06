@@ -6,4 +6,8 @@ public class IdGenerator {
     public static int generateId() {
         return ++id;
     }
+
+    public static void reset() {
+        id = 0;
+    }
 }
