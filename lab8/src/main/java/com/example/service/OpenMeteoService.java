@@ -48,7 +48,7 @@ public class OpenMeteoService {
     public List<WeatherData> getDailyWeatherData(Station station, Date from, Date to) {
         WeatherHourlyDataDTO.HourlyWeather weatherHourlyData = fetchHourlyWheaterHistory(station, from, to).getHourly();
         return weatherHourlyData.getTime().stream().collect(Collectors.groupingBy(hourWeatherData -> toDateWithoutTime(hourWeatherData))).entrySet().stream().sorted(Map.Entry.comparingByKey())
-                .map((hourlyDataEntries) -> DayWeatherData.builder().station(station).averageTemperature(getAverage(weatherHourlyData.getTemperature()))
+                .map((hourlyDataEntries) -> WeatherData.builder().station(station).averageTemperature(getAverage(weatherHourlyData.getTemperature()))
                         .averageHumidity(getAverage(weatherHourlyData.getRelativeHumidity())).averageWindSpeed(getAverage(weatherHourlyData.getWindSpeed()))
                         .precipitationSum(getSum(weatherHourlyData.getPrecipitation())).date(hourlyDataEntries.getKey()).build())
                 .collect(Collectors.toList());
