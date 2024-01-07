@@ -1,11 +1,10 @@
-package com.example;
+package com.example.lab8;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.example.entities.Station;
-import com.example.entities.WeatherData;
-import com.example.service.OpenMeteoService;
+import com.example.lab8.entities.Station;
+import com.example.lab8.service.OpenMeteoService;
 
 import lombok.SneakyThrows;
 

@@ -1,11 +1,11 @@
-package com.example;
+package com.example.lab7;
 
 import java.util.List;
 
-import com.example.entities.Product;
-import com.example.exceptions.EntityNotFoundException;
-import com.example.exceptions.InsufficientQuanitytException;
-import com.example.exceptions.NegativeQuantityException;
+import com.example.lab7.Entities.Product;
+import com.example.lab7.exceptions.EntityNotFoundException;
+import com.example.lab7.exceptions.InsufficientQuanitytException;
+import com.example.lab7.exceptions.NegativeQuantityException;
 
 public class ECommerceDemo {
     private static ECommercePlatform eCommercePlatform = new ECommercePlatform();
@@ -91,11 +91,7 @@ public class ECommerceDemo {
     private static void addProductToCart(int userId, int productId, int quantity) {
         try {
             eCommercePlatform.addProductToCart(userId, productId, quantity);
-        } catch (InsufficientQuanitytException exception) {
-            System.out.println(exception.getMessage());
-        } catch (NegativeQuantityException exception) {
-            System.out.println(exception.getMessage());
-        } catch (EntityNotFoundException exception) {
+        } catch (InsufficientQuanitytException | NegativeQuantityException | EntityNotFoundException exception) {
             System.out.println(exception.getMessage());
         }
     }
@@ -103,11 +99,7 @@ public class ECommerceDemo {
     private static void removeProductFromCart(int userId, int productId) {
         try {
             eCommercePlatform.removeProductFromCart(userId, productId);
-        } catch (InsufficientQuanitytException exception) {
-            System.out.println(exception.getMessage());
-        } catch (NegativeQuantityException exception) {
-            System.out.println(exception.getMessage());
-        } catch (EntityNotFoundException exception) {
+        } catch (InsufficientQuanitytException | NegativeQuantityException | EntityNotFoundException exception) {
             System.out.println(exception.getMessage());
         }
     }
@@ -115,11 +107,7 @@ public class ECommerceDemo {
     private static void removeProductFromCart(int userId, int productId, int quantity) {
         try {
             eCommercePlatform.removeProductFromCart(userId, productId, quantity);
-        } catch (InsufficientQuanitytException exception) {
-            System.out.println(exception.getMessage());
-        } catch (NegativeQuantityException exception) {
-            System.out.println(exception.getMessage());
-        } catch (EntityNotFoundException exception) {
+        } catch (InsufficientQuanitytException | NegativeQuantityException | EntityNotFoundException exception) {
             System.out.println(exception.getMessage());
         }
     }

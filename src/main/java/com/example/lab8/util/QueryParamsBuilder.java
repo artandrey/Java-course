@@ -1,4 +1,4 @@
-package com.example.util;
+package com.example.lab8.util;
 
 import java.util.LinkedList;
 import java.util.List;

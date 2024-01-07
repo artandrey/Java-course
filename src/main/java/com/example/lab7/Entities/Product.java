@@ -1,4 +1,4 @@
-package com.example.entities;
+package com.example.lab7.Entities;
 
 import java.util.Comparator;
 

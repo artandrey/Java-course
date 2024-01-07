@@ -1,4 +1,4 @@
-package com.example;
+package com.example.lab7;
 
 /**
  * Unit test for simple App.
@@ -11,11 +11,11 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.example.entities.Product;
-import com.example.exceptions.EntityNotFoundException;
-import com.example.exceptions.InsufficientQuanitytException;
-import com.example.exceptions.NegativeQuantityException;
-import com.example.util.IdGenerator;
+import com.example.lab7.Entities.Product;
+import com.example.lab7.exceptions.EntityNotFoundException;
+import com.example.lab7.exceptions.InsufficientQuanitytException;
+import com.example.lab7.exceptions.NegativeQuantityException;
+import com.example.lab7.util.IdGenerator;
 
 class ECommercePlatformTest {
     private ECommercePlatform ecommercePlatform;

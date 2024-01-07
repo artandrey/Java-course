@@ -1,4 +1,4 @@
-package com.example;
+package com.example.lab6;
 
 public enum SeatPriority {
     NONE(0), LOW(1), HIGH(2);

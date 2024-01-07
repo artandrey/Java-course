@@ -1,4 +1,4 @@
-package com.example.dto;
+package com.example.lab8.dto;
 
 import java.util.Date;
 import java.util.List;

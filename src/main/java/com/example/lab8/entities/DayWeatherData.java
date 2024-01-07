@@ -1,4 +1,4 @@
-package com.example.entities;
+package com.example.lab8.entities;
 
 import java.util.Date;
 

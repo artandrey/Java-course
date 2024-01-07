@@ -1,4 +1,4 @@
-package com.example.util;
+package com.example.lab7.util;
 
 public class IdGenerator {
     private static int id = 0;

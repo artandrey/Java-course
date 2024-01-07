@@ -1,12 +1,13 @@
-package com.example;
+package com.example.lab5;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.Before;
 import org.junit.Test;
-import com.example.exceptions.AccountNotFoundException;
-import com.example.exceptions.InsufficientFundsException;
-import com.example.exceptions.NegativeAmountException;
+
+import com.example.lab5.Exceptions.AccountNotFoundException;
+import com.example.lab5.Exceptions.InsufficientFundsException;
+import com.example.lab5.Exceptions.NegativeAmountException;
 
 public class AppTest {
 

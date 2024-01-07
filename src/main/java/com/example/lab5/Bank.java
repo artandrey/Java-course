@@ -1,11 +1,11 @@
-package com.example;
+package com.example.lab5;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.exceptions.AccountNotFoundException;
-import com.example.exceptions.InsufficientFundsException;
-import com.example.exceptions.NegativeAmountException;
+import com.example.lab5.Exceptions.AccountNotFoundException;
+import com.example.lab5.Exceptions.InsufficientFundsException;
+import com.example.lab5.Exceptions.NegativeAmountException;
 
 public class Bank {
     private final List<BankAccount> accounts = new ArrayList<>();

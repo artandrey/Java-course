@@ -1,4 +1,4 @@
-package com.example.service;
+package com.example.lab8.service;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -13,11 +13,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.example.dto.WeatherHourlyDataDTO;
-import com.example.entities.DayWeatherData;
-import com.example.entities.Station;
-import com.example.entities.WeatherData;
-import com.example.util.QueryParamsBuilder;
+import com.example.lab8.dto.WeatherHourlyDataDTO;
+import com.example.lab8.entities.DayWeatherData;
+import com.example.lab8.entities.Station;
+import com.example.lab8.entities.WeatherData;
+import com.example.lab8.util.QueryParamsBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.SneakyThrows;

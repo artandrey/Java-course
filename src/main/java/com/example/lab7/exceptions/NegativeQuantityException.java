@@ -1,4 +1,4 @@
-package com.example.exceptions;
+package com.example.lab7.exceptions;
 
 public class NegativeQuantityException extends RuntimeException {
     public NegativeQuantityException(int quantity) {

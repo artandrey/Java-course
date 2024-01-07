@@ -1,4 +1,4 @@
-package com.example;
+package com.example.lab7;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -7,12 +7,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import com.example.entities.Order;
-import com.example.entities.Product;
-import com.example.entities.User;
-import com.example.exceptions.EntityNotFoundException;
-import com.example.exceptions.InsufficientQuanitytException;
-import com.example.exceptions.NegativeQuantityException;
+import com.example.lab7.Entities.Order;
+import com.example.lab7.Entities.Product;
+import com.example.lab7.Entities.User;
+import com.example.lab7.exceptions.EntityNotFoundException;
+import com.example.lab7.exceptions.InsufficientQuanitytException;
+import com.example.lab7.exceptions.NegativeQuantityException;
 
 public class ECommercePlatform {
     private final Map<Integer, User> users = new HashMap<>();

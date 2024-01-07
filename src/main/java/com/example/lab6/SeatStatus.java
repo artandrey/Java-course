@@ -1,4 +1,4 @@
-package com.example;
+package com.example.lab6;
 
 public enum SeatStatus {
     FREE(0), BOOKED(1);

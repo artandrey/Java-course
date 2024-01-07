@@ -1,4 +1,4 @@
-package com.example;
+package com.example.lab6;
 
 import java.util.Arrays;
 import java.util.Comparator;

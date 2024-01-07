@@ -1,6 +1,6 @@
-package com.example.exceptions;
+package com.example.lab7.exceptions;
 
-import com.example.entities.BaseEntity;
+import com.example.lab7.Entities.BaseEntity;
 
 import lombok.Getter;
 

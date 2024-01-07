@@ -1,4 +1,4 @@
-package com.example;
+package com.example.lab4_2;
 
 public class ConsonantsUtil {
     private static final String CONSONANTS = "bcdfghjklmnpqrstvwxyz";

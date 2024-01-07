@@ -1,8 +1,8 @@
-package com.example;
+package com.example.lab5;
 
-import com.example.exceptions.AccountNotFoundException;
-import com.example.exceptions.InsufficientFundsException;
-import com.example.exceptions.NegativeAmountException;
+import com.example.lab5.Exceptions.AccountNotFoundException;
+import com.example.lab5.Exceptions.InsufficientFundsException;
+import com.example.lab5.Exceptions.NegativeAmountException;
 
 /**
  * Hello world!

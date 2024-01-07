@@ -1,4 +1,4 @@
-package com.example;
+package com.example.lab4_2;
 
 import static org.junit.Assert.assertEquals;
 

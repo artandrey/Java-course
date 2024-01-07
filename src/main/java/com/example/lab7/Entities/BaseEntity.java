@@ -1,8 +1,8 @@
-package com.example.entities;
+package com.example.lab7.Entities;
 
 import lombok.Getter;
 
-import com.example.util.IdGenerator;
+import com.example.lab7.util.IdGenerator;
 
 import lombok.AllArgsConstructor;
 

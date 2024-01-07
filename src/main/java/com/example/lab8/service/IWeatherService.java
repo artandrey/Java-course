@@ -1,4 +1,4 @@
-package com.example.service;
+package com.example.lab8.service;
 
 public interface IWeatherService {
 

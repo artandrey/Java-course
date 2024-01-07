@@ -1,4 +1,4 @@
-package com.example;
+package com.example.lab6;
 
 /**
  * Hello world!
