@@ -1,7 +1,6 @@
 package com.example.lab9;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.List;
 
 import com.example.lab9.cellDefinitions.CategoryCellsDefinition;
@@ -10,6 +9,7 @@ import com.example.lab9.cellDefinitions.UserCellsDefinition;
 import com.example.lab9.dto.CategoryDTO;
 import com.example.lab9.dto.ProductDTO;
 import com.example.lab9.dto.UserDTO;
+import com.example.lab9.excel.ExcelWriter;
 import com.example.lab9.excel.SheetDefinition;
 import com.example.lab9.excel.TableFileDefinition;
 import com.example.lab9.service.FakeStoreApiService;
