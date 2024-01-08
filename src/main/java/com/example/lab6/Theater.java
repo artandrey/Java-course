@@ -51,19 +51,31 @@ public class Theater implements ITheater {
         return getSeatStatus(hallNumber, row, numSeats) == SeatStatus.FREE;
     }
 
-    public void printSeatingArrangement(int hallNumber) {
-        StringBuilder seatingArrangement = new StringBuilder();
-        seatingArrangement.append("    ");
-        IntStream.range(0, seatsCount).mapToObj(seat -> String.format("%3d", seat + 1)).forEach(seatingArrangement::append);
-        seatingArrangement.append(System.lineSeparator());
-        IntStream.range(0, rowsCount).forEach(row -> {
-            seatingArrangement.append(String.format("%2d |", row + 1));
-            IntStream.range(0, seatsCount).mapToObj(seat -> String.format("%3d", getSeatStatus(hallNumber, row, seat).toInt())).forEach(seatingArrangement::append);
-            seatingArrangement.append(System.lineSeparator());
-        });
+public void printSeatingArrangement(int hallNumber) {
+    StringBuilder seatingArrangement = new StringBuilder();
+    seatingArrangement.append("    ");
+    IntStream.range(0, seatsCount).mapToObj(seat -> String.format("%3d", seat + 1)).forEach(seatingArrangement::append);
+    seatingArrangement.append(System.lineSeparator());
 
-        System.out.println(seatingArrangement.toString());
-    }
+    IntStream.range(0, rowsCount).forEach(row -> {
+        seatingArrangement.append(String.format("%2d |", row + 1));
+
+        IntStream.range(0, seatsCount).mapToObj(seat -> {
+            SeatStatus seatStatus = getSeatStatus(hallNumber, row, seat);
+            String seatText = String.format("%3d", seatStatus.toInt());
+            seatingArrangement.append(seatStatus == SeatStatus.FREE
+                    ? ColorTextUtil.colorize(seatText, ColorTextUtil.AnsiColor.GREEN, ColorTextUtil.AnsiColor.BLACK)
+                    : ColorTextUtil.colorize(seatText, ColorTextUtil.AnsiColor.RED, ColorTextUtil.AnsiColor.YELLOW));
+
+            return seatText;
+        }).forEach(seatingArrangement::append);
+
+        seatingArrangement.append(System.lineSeparator());
+    });
+
+    System.out.println(seatingArrangement.toString());
+}
+
 
     public SeatRange findBestAvailable(int hallNumber, int numSeats) {
         SeatPriority[][] rankedSeats = getRankedSeats(hallNumber);
