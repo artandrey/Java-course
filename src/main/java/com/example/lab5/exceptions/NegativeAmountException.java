@@ -1,4 +1,5 @@
-package com.example.exceptions;
+package com.example.lab5.exceptions;
+
 
 import lombok.Getter;
 

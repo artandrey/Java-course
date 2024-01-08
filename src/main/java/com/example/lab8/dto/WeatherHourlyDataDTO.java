@@ -2,7 +2,9 @@ package com.example.lab8.dto;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.IntStream;
 
+import com.example.lab8.entities.HourMeasurement;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -33,5 +35,11 @@ public class WeatherHourlyDataDTO {
         @JsonProperty("precipitation")
         private List<Double> precipitation;
 
+        public List<HourMeasurement> toHourMeasurements() {
+            return IntStream.range(0, this.getTime().size()).mapToObj(
+                    i -> new HourMeasurement(this.getTemperature().get(i), this.getPrecipitation().get(i), this.getRelativeHumidity().get(i), this.getWindSpeed().get(i), this.getTime().get(i)))
+                    .toList();
+        }
     }
+
 }
