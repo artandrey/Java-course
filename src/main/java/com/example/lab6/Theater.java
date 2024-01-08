@@ -51,31 +51,29 @@ public class Theater implements ITheater {
         return getSeatStatus(hallNumber, row, numSeats) == SeatStatus.FREE;
     }
 
-public void printSeatingArrangement(int hallNumber) {
-    StringBuilder seatingArrangement = new StringBuilder();
-    seatingArrangement.append("    ");
-    IntStream.range(0, seatsCount).mapToObj(seat -> String.format("%3d", seat + 1)).forEach(seatingArrangement::append);
-    seatingArrangement.append(System.lineSeparator());
-
-    IntStream.range(0, rowsCount).forEach(row -> {
-        seatingArrangement.append(String.format("%2d |", row + 1));
-
-        IntStream.range(0, seatsCount).mapToObj(seat -> {
-            SeatStatus seatStatus = getSeatStatus(hallNumber, row, seat);
-            String seatText = String.format("%3d", seatStatus.toInt());
-            seatingArrangement.append(seatStatus == SeatStatus.FREE
-                    ? ColorTextUtil.colorize(seatText, ColorTextUtil.AnsiColor.GREEN, ColorTextUtil.AnsiColor.BLACK)
-                    : ColorTextUtil.colorize(seatText, ColorTextUtil.AnsiColor.RED, ColorTextUtil.AnsiColor.YELLOW));
-
-            return seatText;
-        }).forEach(seatingArrangement::append);
-
+    public void printSeatingArrangement(int hallNumber) {
+        StringBuilder seatingArrangement = new StringBuilder();
+        seatingArrangement.append("    ");
+        IntStream.range(0, seatsCount).mapToObj(seat -> String.format("%3d", seat + 1)).forEach(seatingArrangement::append);
         seatingArrangement.append(System.lineSeparator());
-    });
 
-    System.out.println(seatingArrangement.toString());
-}
+        IntStream.range(0, rowsCount).forEach(row -> {
+            seatingArrangement.append(String.format("%2d |", row + 1));
 
+            IntStream.range(0, seatsCount).mapToObj(seat -> {
+                SeatStatus seatStatus = getSeatStatus(hallNumber, row, seat);
+                return (seatStatus == SeatStatus.FREE
+                        ? ColorTextUtil.colorize(String.format("%3d", seatStatus.toInt()), ColorTextUtil.AnsiColor.GREEN,
+                                ColorTextUtil.AnsiColor.BLACK)
+                        : ColorTextUtil.colorize(String.format("%3d", seatStatus.toInt()), ColorTextUtil.AnsiColor.RED,
+                                ColorTextUtil.AnsiColor.YELLOW));
+            }).forEach(seatingArrangement::append);
+
+            seatingArrangement.append(System.lineSeparator());
+        });
+
+        System.out.println(seatingArrangement.toString());
+    }
 
     public SeatRange findBestAvailable(int hallNumber, int numSeats) {
         SeatPriority[][] rankedSeats = getRankedSeats(hallNumber);
@@ -92,7 +90,8 @@ public void printSeatingArrangement(int hallNumber) {
     private SeatPriority[][] getRankedSeats(int hallNumber) {
         SeatStatus[][] hall = theaterStore[hallNumber];
         return IntStream.range(0, rowsCount)
-                .mapToObj(rowIndex -> IntStream.range(0, seatsCount).mapToObj(seatIndex -> rankSeat(rowIndex, seatIndex, hall[rowIndex][seatIndex])).toArray(SeatPriority[]::new))
+                .mapToObj(rowIndex -> IntStream.range(0, seatsCount)
+                        .mapToObj(seatIndex -> rankSeat(rowIndex, seatIndex, hall[rowIndex][seatIndex])).toArray(SeatPriority[]::new))
                 .toArray(SeatPriority[][]::new);
     }
 
@@ -102,7 +101,8 @@ public void printSeatingArrangement(int hallNumber) {
 
     public void autoBook(int hallNumber, int numSeats) {
         SeatRange bestAvailableRange = findBestAvailable(hallNumber, numSeats);
-        bookSeats(hallNumber, bestAvailableRange.getRow(), IntStream.range(bestAvailableRange.getStart(), bestAvailableRange.getEnd()).toArray());
+        bookSeats(hallNumber, bestAvailableRange.getRow(),
+                IntStream.range(bestAvailableRange.getStart(), bestAvailableRange.getEnd()).toArray());
     }
 
 }

@@ -1,3 +1,5 @@
+package com.example.lab6;
+
 import java.util.EnumMap;
 import java.util.Map;
 
@@ -31,7 +33,8 @@ public class ColorTextUtil {
     }
 
     public static String colorize(String input, AnsiColor textColor, AnsiColor backgroundColor) {
-        return backgroundColors.get(backgroundColor) + textColors.get(textColor) + input + textColors.get(AnsiColor.RESET) + backgroundColors.get(AnsiColor.RESET);
+        return backgroundColors.get(backgroundColor) + textColors.get(textColor) + input + textColors.get(AnsiColor.RESET)
+                + backgroundColors.get(AnsiColor.RESET);
     }
 
     public static void main(String[] args) {
