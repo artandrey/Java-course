@@ -7,7 +7,7 @@ import java.net.http.HttpResponse;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import com.example.lab8.analysis.Analysis;
+import com.example.lab8.analysis.DataAnalysis;
 import com.example.lab8.dto.WeatherHourlyDataDTO;
 
 import com.example.lab8.entities.HourMeasurement;
@@ -41,7 +41,8 @@ public class OpenMeteoService {
 
     public List<WeatherData> getDailyWeatherData(Station station, Date from, Date to) {
         List<HourMeasurement> weatherHourlyData = fetchHourlyWheaterHistory(station, from, to).getHourly().toHourMeasurements();
-        return Analysis.<HourMeasurement, Date, WeatherData>builder().groupBy(hourData -> TimeUtil.toDateWithoutTime(hourData.getTime()))
+        return DataAnalysis.<HourMeasurement, Date, WeatherData>builder()
+                .groupBy(hourData -> TimeUtil.toDateWithoutTime(hourData.getTime()))
                 .process(hourData -> new WeatherData(hourData.stream().toList(), station)).build().analyze(weatherHourlyData).values()
                 .stream().toList();
     }

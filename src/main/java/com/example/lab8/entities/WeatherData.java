@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-import com.example.lab8.util.AnalysisUtil;
+import com.example.lab8.util.DataAnalysisUtil;
 import com.example.lab8.util.TimeUtil;
 
 import lombok.AccessLevel;
@@ -34,10 +34,10 @@ public class WeatherData {
 
     public WeatherData(List<HourMeasurement> hourMeasurements, Station station) {
         this.station = station;
-        averageTemperature = AnalysisUtil.getAverage(hourMeasurements.stream().mapToDouble(HourMeasurement::getTemperature));
-        averageHumidity = AnalysisUtil.getAverage(hourMeasurements.stream().mapToDouble(HourMeasurement::getHumidity));
-        precipitationSum = AnalysisUtil.getSum(hourMeasurements.stream().mapToDouble(HourMeasurement::getPrecipitation));
-        averageWindSpeed = AnalysisUtil.getAverage(hourMeasurements.stream().mapToDouble(HourMeasurement::getWindSpeed));
+        averageTemperature = DataAnalysisUtil.getAverage(hourMeasurements.stream().mapToDouble(HourMeasurement::getTemperature));
+        averageHumidity = DataAnalysisUtil.getAverage(hourMeasurements.stream().mapToDouble(HourMeasurement::getHumidity));
+        precipitationSum = DataAnalysisUtil.getSum(hourMeasurements.stream().mapToDouble(HourMeasurement::getPrecipitation));
+        averageWindSpeed = DataAnalysisUtil.getAverage(hourMeasurements.stream().mapToDouble(HourMeasurement::getWindSpeed));
         date = TimeUtil.toDateWithoutTime(hourMeasurements.get(0).getTime());
     }
 

@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 import lombok.Builder;
 
 @Builder
-public class Analysis<O, G, R> {
+public class DataAnalysis<O, G, R> {
     private Function<O, G> groupBy;
     private Function<Collection<O>, R> process;
     private Comparator<R> sort;

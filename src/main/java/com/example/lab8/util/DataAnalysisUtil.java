@@ -9,7 +9,7 @@ import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public class AnalysisUtil {
+public class DataAnalysisUtil {
     public static <O> Function<Collection<O>, Boolean> checkRowAppearence(Predicate<O> check, int count) {
         return results -> results.stream().map(item -> check.test(item) ? 1 : 0).reduce(0,
                 (counter, resultStatment) -> counter >= count + 1 ? counter : (counter + 1) * resultStatment) >= count + 1;

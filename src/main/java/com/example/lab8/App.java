@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.example.lab8.analysis.Analysis;
+import com.example.lab8.analysis.DataAnalysis;
 import com.example.lab8.entities.Station;
 import com.example.lab8.entities.WeatherData;
 import com.example.lab8.service.OpenMeteoService;
-import com.example.lab8.util.AnalysisUtil;
+import com.example.lab8.util.DataAnalysisUtil;
 import com.example.lab8.util.TimeUtil;
 
 import de.vandermeer.asciitable.AsciiTable;
@@ -56,14 +56,14 @@ public class App {
     }
 
     public static Map<String, Boolean> getContiniousRainingStatistic(List<WeatherData> weatherData, int rowLength) {
-        return Analysis.<WeatherData, String, Boolean>builder().groupBy(weather -> weather.getId())
-                .process(AnalysisUtil.checkRowAppearence(weather -> weather.getPrecipitationSum() > 1, rowLength)).build()
+        return DataAnalysis.<WeatherData, String, Boolean>builder().groupBy(weather -> weather.getId())
+                .process(DataAnalysisUtil.checkRowAppearence(weather -> weather.getPrecipitationSum() > 1, rowLength)).build()
                 .analyze(weatherData);
     }
 
     public static Map<String, Boolean> getTemperatureContiniousRisingStatistic(List<WeatherData> weatherData, int daysCount, int risedBy) {
-        return Analysis.<WeatherData, String, Boolean>builder().groupBy(weather -> weather.getId())
-                .process(weather -> (AnalysisUtil
+        return DataAnalysis.<WeatherData, String, Boolean>builder().groupBy(weather -> weather.getId())
+                .process(weather -> (DataAnalysisUtil
                         .<WeatherData>checkTrendSome(
                                 (current, previous) -> current.getAverageTemperature() >= previous.getAverageTemperature() + 5, daysCount)
                         .apply(weather)))
@@ -71,31 +71,31 @@ public class App {
     }
 
     public static Map<String, Double> getTopStationsByHighestAverageTemperature(List<WeatherData> weatherData, int limit) {
-        return Analysis.<WeatherData, String, Double>builder().groupBy(weather -> weather.getId())
-                .process(weather -> AnalysisUtil.getAverage(weather.stream().mapToDouble(WeatherData::getAverageTemperature)))
+        return DataAnalysis.<WeatherData, String, Double>builder().groupBy(weather -> weather.getId())
+                .process(weather -> DataAnalysisUtil.getAverage(weather.stream().mapToDouble(WeatherData::getAverageTemperature)))
                 .sort(Comparator.comparingDouble(Double::doubleValue)).limitation(limit).build().analyze(weatherData);
     }
 
     public static Map<String, Double> getTopStationsByLowestAverageTemperature(List<WeatherData> weatherData, int limit) {
-        return Analysis.<WeatherData, String, Double>builder().groupBy(weather -> weather.getId())
-                .process(weather -> AnalysisUtil.getAverage(weather.stream().mapToDouble(WeatherData::getAverageTemperature)))
+        return DataAnalysis.<WeatherData, String, Double>builder().groupBy(weather -> weather.getId())
+                .process(weather -> DataAnalysisUtil.getAverage(weather.stream().mapToDouble(WeatherData::getAverageTemperature)))
                 .sort(Comparator.comparingDouble(Double::doubleValue).reversed()).limitation(limit).build().analyze(weatherData);
     }
 
     public static Map<String, List<Double>> getAverageStatisticByMonth(List<WeatherData> weatherData) {
-        return Analysis.<WeatherData, String, List<Double>>builder().groupBy(weather -> TimeUtil.getMonthLiteral(weather.getDate()))
+        return DataAnalysis.<WeatherData, String, List<Double>>builder().groupBy(weather -> TimeUtil.getMonthLiteral(weather.getDate()))
                 .process(weather -> {
                     List<Double> result = new ArrayList<>();
-                    result.add(AnalysisUtil.getAverage(weather.stream().mapToDouble(WeatherData::getAverageTemperature)));
-                    result.add(AnalysisUtil.getAverage(weather.stream().mapToDouble(WeatherData::getAverageHumidity)));
-                    result.add(AnalysisUtil.getAverage(weather.stream().mapToDouble(WeatherData::getPrecipitationSum)));
+                    result.add(DataAnalysisUtil.getAverage(weather.stream().mapToDouble(WeatherData::getAverageTemperature)));
+                    result.add(DataAnalysisUtil.getAverage(weather.stream().mapToDouble(WeatherData::getAverageHumidity)));
+                    result.add(DataAnalysisUtil.getAverage(weather.stream().mapToDouble(WeatherData::getPrecipitationSum)));
                     return result;
                 }).build().analyze(weatherData);
     }
 
     public static Map<String, Double> getHighestWindMonth(List<WeatherData> weatherData) {
-        return Analysis.<WeatherData, String, Double>builder().groupBy(weather -> TimeUtil.getMonthLiteral(weather.getDate()))
-                .process(weather -> AnalysisUtil.getAverage(weather.stream().mapToDouble(WeatherData::getAverageWindSpeed)))
+        return DataAnalysis.<WeatherData, String, Double>builder().groupBy(weather -> TimeUtil.getMonthLiteral(weather.getDate()))
+                .process(weather -> DataAnalysisUtil.getAverage(weather.stream().mapToDouble(WeatherData::getAverageWindSpeed)))
                 .sort(Comparator.comparingDouble(Double::doubleValue)).limitation(1).build().analyze(weatherData);
     }
 
