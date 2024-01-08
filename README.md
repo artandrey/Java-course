@@ -10,3 +10,5 @@ This repository contains labs from java course
 -   [Лабораторна робота 5](./src/main/java/com/example/lab5/README.md)
 -   [Лабораторна робота 6](./src/main/java/com/example/lab6/README.md)
 -   [Лабораторна робота 7](./src/main/java/com/example/lab7/README.md)
+-   [Лабораторна робота 8](./src/main/java/com/example/lab8/README.md)
+-   [Лабораторна робота 9](./src/main/java/com/example/lab9/README.md)
